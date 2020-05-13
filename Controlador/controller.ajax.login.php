@@ -32,12 +32,11 @@ if(isset($_POST['user']) && isset($_POST['pass']))
       /* bloque: condicion if que compara el largo del array $arreglo con el valor 0 */
       if(count($arreglo) == 0)
       {
-        $resp_ajax = 'false';
+        header("LOCATION: ../vista/index.php"); //contraseña o usuario incorrecto
+        /*$resp_ajax = 'False';*/
       }
       else
       {
-
-
         //Creamos el usuario con su infomacion personal
         $logeado = new Usuario(null,$usuario);
         $logeado->crear_usuario();
@@ -46,13 +45,17 @@ if(isset($_POST['user']) && isset($_POST['pass']))
         //$resp_ajax = "index2.php";
 
         if ($logeado->id_rol == 1) {
-          $_SESSION['admin'] = $logeado;
-          header('LOCATION: ../Vista/index.backend.php');
-        } else {
-          $_SESSION['user'] = $logeado;
-          header('LOCATION: ../Vista/index.frontend.php');
-        }
+          if ($logeado->estado ==1) {
+            $_SESSION['admin'] = $logeado;
+            header('LOCATION: ../Vista/index.backend.php');
+          }else{  header("LOCATION: ../vista/index.php");  }
 
+        } else if ($logeado->id_rol == 2) {
+          if ($logeado->estado ==1) {
+            $_SESSION['user'] = $logeado;
+            header('LOCATION: ../Vista/index.frontend.php');
+          }else{  header("LOCATION: ../vista/index.php");  }
+      }
 
 
       }

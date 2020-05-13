@@ -21,15 +21,15 @@ class Usuario
 
   public function crear_usuario()
   {
-    $sql = "SELECT * FROM tfsusuarios WHERE UserRut = '$this->rut' LIMIT 1";
-  $query = new Query($sql,1);
+    $sql = "SELECT * FROM usuario WHERE rut = '$this->rut' LIMIT 1";
+  $query = new Query($sql);
     $datos = $query->select();
     foreach ($datos as  $value) {
-      $this->nombre_usuario = $value['UserNombre'];
-      $this->rut = $value['UserRut'];
-      $this->correo_usuario = $value['UserEmail'];
-      $this->id_rol = $value['UserRol'];
-      $this->estado = $value['UserEstado'];
+      $this->rut = $value['rut'];
+      $this->nombre_usuario = $value['nombre'];
+      $this->id_rol = $value['rol'];
+      $this->correo_usuario = $value['email'];
+      $this->estado = $value['estado'];
     }
   }
 }

@@ -37,7 +37,7 @@ if(isset($_SESSION['user']))
    <header>
      <h4>
        <?php
-        echo "<h2>Bienvenido ".$_SESSION['user']->nombre_usuario."</h2>
+        echo "<h2>Bienvenido Usuario ".$_SESSION['user']->nombre_usuario."</h2>
         <br>Password: ".$_SESSION['user']->rut."
         <br>Correo: ".$_SESSION['user']->correo_usuario."
         <br>Rol: ".$_SESSION['user']->id_rol."

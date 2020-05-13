@@ -25,7 +25,7 @@ class Conexion{
   */
 public function __construct(/*$rol_usuario*/){
     $servidor='localhost';
-    $bd='DB_tf_s';
+    $bd='bd_i';
     $usuario="root";
     $pass="";
     /*

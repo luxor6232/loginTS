@@ -21,7 +21,7 @@ class Login{
   public function __destruct(){}
 
   public function verificar($rol_usuario){
-    $sql = "SELECT * FROM tfslogin WHERE tfsRutLog='$this->user' AND tfsPassWordLog='$this->clave' AND tfsEstadoLog='1' LIMIT 1";
+    $sql = "SELECT * FROM login WHERE Rut='$this->user' AND password='$this->clave' /*AND tfsEstadoLog='1' */LIMIT 1";
     $query = new Query($sql,$rol_usuario);
     $arreglo = $query->select();
     $query->conexion->cerrar();
