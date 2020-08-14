@@ -29,29 +29,27 @@ if(isset($_SESSION['user']))
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <link rel="stylesheet" href="assets/css/Loby2.styles.css">
      <title>Web Usuario</title>
 
 
  </head>
  <body>
-   <header>
-     <h4>
-       <?php
-        echo "<h2>Bienvenido Usuario ".$_SESSION['user']->nombre_usuario."</h2>
-        <br>Password: ".$_SESSION['user']->rut."
-        <br>Correo: ".$_SESSION['user']->correo_usuario."
-        <br>Rol: ".$_SESSION['user']->id_rol."
-        <br>Estado: ".$_SESSION['user']->estado;
-      ?>
-      <br>
-      <a href="../modelo/class.logout.php">Salir</a>
-     </h4>
-   </header>
-     <?php
+      <h2>Menu</h2>
 
-
-
-      ?>
+      <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#contact">Realizar Solicitud</a></li>
+        <li><a href="../modelo/class.logout.php">Salir</a></li>
+      </ul>
+        <?php
+          echo "<h1>Bienvenido Usuario ".$_SESSION['user']->nombre_usuario."</h1>
+          <br>Password: ".$_SESSION['user']->rut."
+          <br>Correo: ".$_SESSION['user']->correo_usuario."
+          <br>Rol: ".$_SESSION['user']->id_rol."
+          <br>Estado: ".$_SESSION['user']->estado;
+        ?>
+      </div>
  </body>
 </html>
 <?php
