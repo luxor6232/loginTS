@@ -5,8 +5,6 @@ la sesion no podra leer el objeto usuario dentro de ella
 */
 require_once('../modelo/class.query.php');
 require_once('../modelo/class.usuario.php');
-//?require_once('../modelo/class.plantilla.php');
-//?require_once('../../controlador/plantilla.controlador.php');
 session_start();
 
 
@@ -18,7 +16,18 @@ if(isset($_GET['modulo']) && $_GET['modulo']==666)
 }
 
 if(isset($_SESSION['admin']))
-{
+{//extraemos el valor que nos envia la base de datos y lo remplazamos, si es 1 es administrador y si es 2 es usuario.
+  if($_SESSION['admin']->id_rol = 1){
+    $rol = "Administrador";
+  }else{
+    $rol = "Usuario";
+  }
+//extraemos el valor que nos envia la base de datos y lo remplazamos, si es 1 esta Activo y si es 2 esta inactivo.
+  if($_SESSION['admin']->estado = 1){
+    $esta = "Activo";
+  }else{
+    $esta = "Inactivo";
+  }
 
  ?>
 <!DOCTYPE html>
@@ -37,22 +46,53 @@ if(isset($_SESSION['admin']))
  <body>
  
       <ul>
+      <div style="margin-left:4%;">
+      <?php
+          echo "<h4>Bienvenido Administrador ".$_SESSION['admin']->nombre_usuario."</h4>
+          Rut: ".$_SESSION['admin']->rut."
+          <br>Correo: ".$_SESSION['admin']->correo_usuario."
+          <br>Rol: ".$rol."
+          <br>Estado: ".$esta;
+                 
+      ?>      
+      </div><!-- menu-->
+        <br>      
         <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="?modulo=0">Proyectos</a></li>
+        <li><a href="?modulo=1">Usuarios</a></li>
+        <li><a href="?modulo=2">About</a></li>
         <li><a href="../modelo/class.logout.php">Salir</a></li>
       </ul>
 
       <div style="margin-left:25%;padding:1px 16px;height:1000px;">
         <?php
-          echo "<h2>Bienvenido Administrador ".$_SESSION['admin']->nombre_usuario."</h2>
-          <br>Password: ".$_SESSION['admin']->rut."
-          <br>Correo: ".$_SESSION['admin']->correo_usuario."
-          <br>Rol: ".$_SESSION['admin']->id_rol."
-          <br>Estado: ".$_SESSION['admin']->estado;
+
+          //modulo donde llamamos los archivos a solicitar
+          $menu = 0;
+          if (isset($_GET["modulo"])) {
+            $menu = $_GET["modulo"];
+          }
+          switch ($menu)
+          {
+            case 0:
+              //require_once('#');
+              break;
+            case 1:
+              require_once('Modulos/view.user.php');
+              break;
+            case 4:
+              require_once('Modulos/modify.user.php');
+              break;              
+            case 5:
+              require_once('Modulos/maker.user.php');
+              break;
+            default:
+              require_once('index.backend.php');
+              break;
+          }
         ?>
       </div>
+
  </body>
 </html>
 <?php

@@ -10,9 +10,8 @@ class Login{
 * Es encargado de crear el objeto Login con el usuario y clave como parametros.
 * inicializa los atributos de la clase Login.
 *
-* @access public
-* @param string $usuario  Almacena el nombre de usuario en las credenciales de acceso
-* @param string $pass Almacena la clave del usuario en las credenciales de acceso.
+* $usuario  Almacena el nombre de usuario en las credenciales de acceso
+* $pass Almacena la clave del usuario en las credenciales de acceso.
 */
   public function __construct($usuario,$pass){
     $this->user = $usuario;

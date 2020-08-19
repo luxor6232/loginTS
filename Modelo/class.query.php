@@ -7,9 +7,9 @@
 * esta clase se encargará de ejecutarla, para ello esta relacionada
 * con la clase Conexion, ya que esta última contiene el enlace a MySQLi.
 * La clase Query esta relacionada con la clase Conexion, es por eso que
-* se incluye el archivo class.conexion.php, ahí se encuentra la  definicion de la clase Conexion.
+* se incluye el archivo class.conexion.php.
 */
-require_once 'class.conexion.php';
+require_once('class.conexion.php');
 class Query
 {
   public $sql;
@@ -61,8 +61,7 @@ class Query
   * información la almacena en un arreglo que retorna si realizo correctamente la query, en caso contrario
   * retorna una respuesta booleana false.
   * Antes de retornar, cierra la conexion a mysqli.
-  * @access public
-  * @return mixed|false Si realizo correctamente la query retorna un arreglo, caso contrario retorna false.
+  *  Si realizo correctamente la query retorna un arreglo, caso contrario retorna false.
   */
   public function select(){
     mysqli_query($this->conexion->enlace,'SET NAMES utf8') or die(mysqli_error($this->conexion->enlace));

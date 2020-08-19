@@ -5,8 +5,6 @@ la sesion no podra leer el objeto usuario dentro de ella
 */
 require_once('../modelo/class.query.php');
 require_once('../modelo/class.usuario.php');
-//require_once('../modelo/class.plantilla.php');
-//require_once('../../controlador/plantilla.controlador.php');
 session_start();
 
 

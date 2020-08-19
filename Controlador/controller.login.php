@@ -39,7 +39,7 @@ if(isset($_POST['user']) && isset($_POST['pass']))
       {
         //Creamos el usuario con su infomacion personal
         $logeado = new Usuario(null,$usuario);
-        $logeado->crear_usuario();
+        $logeado->usuario();
         /* Creamos la session */
 
         //$resp_ajax = "index2.php";

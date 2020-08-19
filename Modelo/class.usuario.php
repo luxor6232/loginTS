@@ -19,7 +19,7 @@ class Usuario
     $this->estado = $estado;
   }
 
-  public function crear_usuario()
+  public function usuario()
   {
     $sql = "SELECT * FROM usuario WHERE rut = '$this->rut' LIMIT 1";
   $query = new Query($sql);
