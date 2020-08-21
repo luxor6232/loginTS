@@ -98,4 +98,5 @@ body {
 /* El efecto de enfoque de los botones */
 .login button[type="submit"]:focus {
   border-color: #05a;
+  
 }
